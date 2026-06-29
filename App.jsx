@@ -1218,7 +1218,7 @@ We are not licensed to provide these services.
 
 <div>
 <h2 className="text-2xl font-bold text-gray-900 mb-3">Contact & Support</h2>
-<p>Have feedback? Found an error? Want to contribute? Contact us at: <strong>hello@propertymate.com.au</strong></p>
+<p>Have feedback? Found an error? Want to contribute? Contact us at: <a href="https://formspree.io/f/xrewlkkk">Contact Form</a></p>
 </div>
 </div>
 </div>
@@ -1286,7 +1286,7 @@ return (
 </div>
 <div>
 <h3 className="font-bold text-white mb-4">Support</h3>
-<p className="text-sm">hello@propertymate.com.au</p>
+<a href="https://formspree.io/f/xrewlkkk">Support</a></p>
 </div>
 </div>
 
