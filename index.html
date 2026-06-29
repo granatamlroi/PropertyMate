@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PropertyMate AU - Australian Property Help</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+background-color: #f9fafb;
+color: #111827;
+}
+
+nav {
+position: sticky;
+top: 0;
+z-index: 50;
+background: white;
+box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+border-bottom: 1px solid #dbeafe;
+padding: 1rem;
+}
+
+.nav-container {
+max-width: 80rem;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.nav-logo {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+cursor: pointer;
+font-weight: bold;
+font-size: 1.125rem;
+color: #2563eb;
+}
+
+.nav-logo-icon {
+background: linear-gradient(135deg, #3b82f6, #16a34a);
+padding: 0.5rem;
+border-radius: 0.5rem;
+color: white;
+}
+
+.nav-desktop {
+display: none;
+gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+.nav-desktop {
+display: flex;
+}
+.nav-mobile-btn {
+display: none !important;
+}
+}
+
+.nav-btn {
+padding: 0.5rem 0.75rem;
+border: none;
+border-radius: 0.375rem;
+font-size: 0.875rem;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.2s;
+background: transparent;
+color: #4b5563;
+}
+
+.nav-btn.active {
+background: #dbeafe;
+color: #1e40af;
+}
+
+.nav-btn:hover {
+background: #f3f4f6;
+}
+
+.nav-user {
+display: flex;
+gap: 0.75rem;
+align-items: center;
+}
+
+.nav-mobile-btn {
+background: none;
+border: none;
+cursor: pointer;
+font-size: 1.5rem;
+color: #4b5563;
+padding: 0.5rem;
+}
+
+main {
+min-height: 100vh;
+}
+
+.container {
+max-width: 80rem;
+margin: 0 auto;
+padding: 2rem 1rem;
+}
+
+section {
+display: none;
+}
+
+section.active {
+display: block;
+}
+
+.hero {
+background: linear-gradient(135deg, #f0f9ff 0%, #f5fafb 50%, #dcfce7 100%);
+padding: 4rem 1rem;
+text-align: center;
+}
+
+.hero h1 {
+font-size: 2.25rem;
+font-weight: bold;
+margin-bottom: 1rem;
+color: #111827;
+}
+
+.hero p {
+font-size: 1.125rem;
+color: #4b5563;
+margin-bottom: 2rem;
+}
+
+.btn-group {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+justify-content: center;
+margin-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+.btn-group {
+flex-direction: row;
+}
+}
+
+.btn {
+padding: 0.75rem 1.5rem;
+border: none;
+border-radius: 0.5rem;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.2s;
+font-size: 1rem;
+}
+
+.btn-primary {
+background: #2563eb;
+color: white;
+}
+
+.btn-primary:hover {
+background: #1d4ed8;
+}
+
+.btn-secondary {
+background: #16a34a;
+color: white;
+}
+
+.btn-secondary:hover {
+background: #15803d;
+}
+
+.btn-outline {
+background: transparent;
+border: 2px solid #2563eb;
+color: #2563eb;
+}
+
+.btn-outline:hover {
+background: #f0f9ff;
+}
+
+.disclaimer {
+background: #fef3c7;
+border-left: 4px solid #f59e0b;
+padding: 1rem;
+margin-bottom: 2rem;
+border-radius: 0.375rem;
+font-size: 0.875rem;
+}
+
+.grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 1.5rem;
+margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+.grid {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (min-width: 1024px) {
+.grid {
+grid-template-columns: repeat(3, 1fr);
+}
+}
+
+.card {
+background: white;
+border-radius: 0.5rem;
+box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+padding: 1.5rem;
+cursor: pointer;
+transition: all 0.2s;
+border: 2px solid transparent;
+}
+
+.card:hover {
+box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+border-color: #dbeafe;
+}
+
+.card-icon {
+font-size: 2rem;
+margin-bottom: 0.75rem;
+}
+
+.card-title {
+font-weight: bold;
+margin-bottom: 0.5rem;
+color: #111827;
+}
+
+.card-desc {
+font-size: 0.875rem;
+color: #4b5563;
+}
+
+h2 {
+font-size: 1.875rem;
+font-weight: bold;
+margin-bottom: 2rem;
+color: #111827;
+}
+
+h3 {
+font-weight: bold;
+margin-bottom: 0.75rem;
+color: #111827;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+width: 100%;
+padding: 0.5rem;
+border: 1px solid #d1d5db;
+border-radius: 0.375rem;
+font-size: 1rem;
+margin-bottom: 0.5rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+outline: none;
+ring: 2px solid #2563eb;
+border-color: transparent;
+}
+
+.form-group {
+margin-bottom: 1.5rem;
+}
+
+.form-label {
+display: block;
+font-size: 0.875rem;
+font-weight: 500;
+margin-bottom: 0.5rem;
+color: #374151;
+}
+
+.result-box {
+background: linear-gradient(135deg, #dcfce7 0%, #dbeafe 100%);
+border-left: 4px solid #16a34a;
+border-radius: 0.5rem;
+padding: 1.5rem;
+margin-top: 2rem;
+}
+
+.result-box h2 {
+color: #111827;
+margin-bottom: 1rem;
+}
+
+.stat-box {
+background: white;
+border-left: 4px solid #2563eb;
+border-radius: 0.375rem;
+padding: 1rem;
+margin-bottom: 1rem;
+}
+
+.stat-label {
+font-size: 0.75rem;
+font-weight: 600;
+color: #6b7280;
+text-transform: uppercase;
+margin-bottom: 0.25rem;
+}
+
+.stat-value {
+font-size: 1.875rem;
+font-weight: bold;
+color: #2563eb;
+}
+
+footer {
+background: #111827;
+color: #d1d5db;
+padding: 3rem 1rem;
+margin-top: 4rem;
+}
+
+.footer-content {
+max-width: 80rem;
+margin: 0 auto;
+}
+
+.footer-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 2rem;
+margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+.footer-grid {
+grid-template-columns: repeat(4, 1fr);
+}
+}
+
+.footer-col h3 {
+color: white;
+margin-bottom: 1rem;
+}
+
+.footer-col a {
+color: #d1d5db;
+text-decoration: none;
+font-size: 0.875rem;
+display: block;
+margin-bottom: 0.5rem;
+}
+
+.footer-col a:hover {
+color: white;
+}
+
+.footer-bottom {
+border-top: 1px solid #374151;
+padding-top: 2rem;
+text-align: center;
+font-size: 0.875rem;
+}
+
+.calculator-selector {
+display: flex;
+gap: 0.75rem;
+margin-bottom: 2rem;
+flex-wrap: wrap;
+}
+
+.calc-btn {
+padding: 0.5rem 1rem;
+border: none;
+border-radius: 0.375rem;
+cursor: pointer;
+font-weight: 500;
+transition: all 0.2s;
+}
+
+.calc-btn.inactive {
+background: #e5e7eb;
+color: #374151;
+}
+
+.calc-btn.active {
+background: #2563eb;
+color: white;
+}
+
+.calculator {
+display: none;
+background: white;
+padding: 2rem;
+border-radius: 0.5rem;
+box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.calculator.active {
+display: block;
+}
+
+.calc-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 1rem;
+margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+.calc-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+
+.two-col {
+grid-column: 1 / -1;
+}
+
+.result-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 1rem;
+margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+.result-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+
+.result-stat {
+padding: 1.5rem;
+border-radius: 0.375rem;
+text-align: center;
+}
+
+.result-stat.green {
+background: #dcfce7;
+border-left: 4px solid #16a34a;
+}
+
+.result-stat.red {
+background: #fee2e2;
+border-left: 4px solid #dc2626;
+}
+
+.result-stat.blue {
+background: #dbeafe;
+border-left: 4px solid #2563eb;
+}
+
+.template-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+.template-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+
+.template-content {
+background: #f3f4f6;
+padding: 1.5rem;
+border-radius: 0.375rem;
+max-height: 400px;
+overflow-y: auto;
+font-family: monospace;
+white-space: pre-wrap;
+font-size: 0.875rem;
+margin-bottom: 1rem;
+border: 1px solid #d1d5db;
+}
+
+.hide {
+display: none !important;
+}
+</style>
+</head>
+<body>
+<!-- NAVIGATION -->
+<nav>
+<div class="nav-container">
+<div class="nav-logo" onclick="showPage('home')">
+<div class="nav-logo-icon"><i class="fas fa-home"></i></div>
+<span>PropertyMate AU</span>
+</div>
+
+<div class="nav-desktop">
+<button class="nav-btn active" onclick="showPage('home')">Home</button>
+<button class="nav-btn" onclick="showPage('ask')">Ask Question</button>
+<button class="nav-btn" onclick="showPage('defect')">Defect Checker</button>
+<button class="nav-btn" onclick="showPage('calculators')">Calculators</button>
+<button class="nav-btn" onclick="showPage('templates')">Templates</button>
+<button class="nav-btn" onclick="showPage('articles')">Articles</button>
+<button class="nav-btn" onclick="showPage('about')">About</button>
+</div>
+
+<button class="nav-mobile-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+</div>
+</nav>
+
+<main>
+<!-- HOME PAGE -->
+<section id="home" class="active">
+<div class="hero">
+<div class="container">
+<h1>Ask Any Residential Property Question</h1>
+<p>Get simple guidance on defects, warranties, repairs, investment property costs, and tax-related property questions in Australia.</p>
+
+<div class="btn-group">
+<button class="btn btn-primary" onclick="showPage('ask')">Ask a Question</button>
+<button class="btn btn-secondary" onclick="showPage('calculators')">Use Calculators</button>
+<button class="btn btn-outline" onclick="showPage('defect')">Check Builder Defects</button>
+</div>
+
+<div class="disclaimer">
+<strong>⚠️ Important Disclaimer:</strong> PropertyMate AU provides general information only and is NOT legal, tax, building, engineering, financial, or accounting advice. Always consult licensed professionals before making decisions.
+</div>
+</div>
+</div>
+
+<div class="container">
+<h2>Explore by Topic</h2>
+<div class="grid">
+<div class="card" onclick="showPage('articles')">
+<div class="card-icon">🏗️</div>
+<div class="card-title">Builder Defects</div>
+<div class="card-desc">Is it a defect? What to do?</div>
+</div>
+<div class="card" onclick="showPage('articles')">
+<div class="card-icon">✅</div>
+<div class="card-title">New Home Warranty</div>
+<div class="card-desc">Coverage & claims explained</div>
+</div>
+<div class="card" onclick="showPage('articles')">
+<div class="card-icon">📋</div>
+<div class="card-title">90-Day Checklist</div>
+<div class="card-desc">What to check after handover</div>
+</div>
+<div class="card" onclick="showPage('articles')">
+<div class="card-icon">📊</div>
+<div class="card-title">Investment Tax</div>
+<div class="card-desc">Tax benefits & deductions</div>
+</div>
+<div class="card" onclick="showPage('articles')">
+<div class="card-icon">💰</div>
+<div class="card-title">Negative Gearing</div>
+<div class="card-desc">Understand tax losses</div>
+</div>
+<div class="card" onclick="showPage('articles')">
+<div class="card-icon">📉</div>
+<div class="card-title">Depreciation</div>
+<div class="card-desc">Building & contents depreciation</div>
+</div>
+<div class="card" onclick="showPage('articles')">
+<div class="card-icon">🔧</div>
+<div class="card-title">Repairs & Maintenance</div>
+<div class="card-desc">DIY vs professional help</div>
+</div>
+<div class="card" onclick="showPage('articles')">
+<div class="card-icon">🏢</div>
+<div class="card-title">Council & Strata</div>
+<div class="card-desc">OC, CDC, approvals</div>
+</div>
+<div class="card" onclick="showPage('articles')">
+<div class="card-icon">🛠️</div>
+<div class="card-title">DIY Fixes</div>
+<div class="card-desc">Bunnings options & tips</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ASK QUESTION PAGE -->
+<section id="ask">
+<div class="container">
+<h2>Ask Your Property Question</h2>
+<p>Describe your issue in detail. Upload photos if relevant. You'll receive practical guidance within seconds.</p>
+
+<div class="disclaimer">
+<strong>General guidance only:</strong> PropertyMate AU is not providing legal, tax, building, engineering, or financial advice. Consult qualified professionals for decisions.
+</div>
+
+<div class="form-group">
+<div class="form-label">Your Question</div>
+<textarea id="question" placeholder="E.g., Is this crack in my kitchen tile a builder defect? Can I claim plumbing repairs on my investment property tax return?" rows="6"></textarea>
+</div>
+
+<button class="btn btn-primary" onclick="submitQuestion()">Get Guidance</button>
+
+<div id="questionResult" class="hide"></div>
+</div>
+</section>
+
+<!-- DEFECT CHECKER PAGE -->
+<section id="defect">
+<div class="container">
+<h2>Defect Checker</h2>
+<p>Select the area and issue type, and we'll help you understand if it's likely a builder defect.</p>
+
+<div class="disclaimer">
+<strong>Important:</strong> This tool provides general guidance only. Always consult a qualified building inspector or engineer for professional assessment.
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+<div class="form-group">
+<div class="form-label">Property Area</div>
+<select id="defectArea">
+<option value="">Select area...</option>
+<option>Bathroom</option>
+<option>Kitchen</option>
+<option>Garage</option>
+<option>Roof</option>
+<option>External Wall</option>
+<option>Concrete</option>
+<option>Driveway</option>
+<option>Windows</option>
+<option>Doors</option>
+</select>
+</div>
+
+<div class="form-group">
+<div class="form-label">Issue Type</div>
+<select id="defectIssue">
+<option value="">Select issue...</option>
+<option>Crack</option>
+<option>Gap</option>
+<option>Leak</option>
+<option>Poor Finish</option>
+<option>Loose Item</option>
+<option>Damage</option>
+</select>
+</div>
+</div>
+
+<button class="btn btn-secondary" onclick="checkDefect()">Check for Defects</button>
+
+<div id="defectResult" class="hide"></div>
+</div>
+</section>
+
+<!-- CALCULATORS PAGE -->
+<section id="calculators">
+<div class="container">
+<h2>Property Calculators</h2>
+<p>Use these tools to estimate costs, cashflow, and financial impacts of property ownership.</p>
+
+<div class="disclaimer">
+<strong>Disclaimer:</strong> These are estimates only. Actual figures may vary. Consult a financial advisor for personalized advice.
+</div>
+
+<div class="calculator-selector">
+<button class="calc-btn active" onclick="switchCalc('investment')">Investment Cashflow</button>
+<button class="calc-btn inactive" onclick="switchCalc('gearing')">Negative Gearing</button>
+<button class="calc-btn inactive" onclick="switchCalc('mortgage')">Mortgage Calculator</button>
+</div>
+
+<!-- Investment Cashflow -->
+<div id="investment" class="calculator active">
+<div class="calc-grid">
+<div class="form-group">
+<div class="form-label">Property Value ($)</div>
+<input type="number" id="invPropValue" value="500000" onchange="calcInvestment()">
+</div>
+<div class="form-group">
+<div class="form-label">Loan Amount ($)</div>
+<input type="number" id="invLoanAmount" value="400000" onchange="calcInvestment()">
+</div>
+<div class="form-group">
+<div class="form-label">Interest Rate (%)</div>
+<input type="number" id="invRate" value="6.5" step="0.1" onchange="calcInvestment()">
+</div>
+<div class="form-group">
+<div class="form-label">Weekly Rent ($)</div>
+<input type="number" id="invWeeklyRent" value="400" onchange="calcInvestment()">
+</div>
+<div class="form-group two-col">
+<div class="form-label">Annual Expenses</div>
+</div>
+<div class="form-group">
+<div class="form-label">Council Rates ($)</div>
+<input type="number" id="invCouncil" value="2000" onchange="calcInvestment()">
+</div>
+<div class="form-group">
+<div class="form-label">Water ($)</div>
+<input type="number" id="invWater" value="600" onchange="calcInvestment()">
+</div>
+<div class="form-group">
+<div class="form-label">Strata ($)</div>
+<input type="number" id="invStrata" value="4000" onchange="calcInvestment()">
+</div>
+<div class="form-group">
+<div class="form-label">Insurance ($)</div>
+<input type="number" id="invInsurance" value="1200" onchange="calcInvestment()">
+</div>
+<div class="form-group">
+<div class="form-label">Property Mgmt ($)</div>
+<input type="number" id="invMgmt" value="1440" onchange="calcInvestment()">
+</div>
+<div class="form-group">
+<div class="form-label">Repairs ($)</div>
+<input type="number" id="invRepairs" value="2000" onchange="calcInvestment()">
+</div>
+</div>
+<div class="result-grid">
+<div class="result-stat green">
+<div class="stat-label">ANNUAL RENT</div>
+<div class="stat-value" id="invAnnualRent">$20,800</div>
+</div>
+<div class="result-stat red">
+<div class="stat-label">ANNUAL EXPENSES</div>
+<div class="stat-value" id="invExpenses">$13,240</div>
+</div>
+<div class="result-stat blue" style="grid-column: 1/-1;">
+<div class="stat-label">NET CASHFLOW (Before Tax)</div>
+<div class="stat-value" id="invCashflow">$7,560</div>
+</div>
+</div>
+</div>
+
+<!-- Negative Gearing -->
+<div id="gearing" class="calculator">
+<div class="calc-grid">
+<div class="form-group">
+<div class="form-label">Annual Rental Income ($)</div>
+<input type="number" id="gearIncome" value="20800" onchange="calcGearing()">
+</div>
+<div class="form-group">
+<div class="form-label">Deductible Expenses ($)</div>
+<input type="number" id="gearExpenses" value="10000" onchange="calcGearing()">
+</div>
+<div class="form-group">
+<div class="form-label">Loan Interest ($)</div>
+<input type="number" id="gearInterest" value="26000" onchange="calcGearing()">
+</div>
+<div class="form-group">
+<div class="form-label">Your Marginal Tax Rate (%)</div>
+<input type="number" id="gearTaxRate" value="37" onchange="calcGearing()">
+</div>
+</div>
+<div class="result-grid">
+<div class="result-stat" id="gearProfitBox">
+<div class="stat-label">TAXABLE PROFIT/LOSS</div>
+<div class="stat-value" id="gearProfit">-$15,200</div>
+</div>
+<div class="result-stat green">
+<div class="stat-label">ESTIMATED TAX BENEFIT</div>
+<div class="stat-value" id="gearBenefit">$5,624</div>
+</div>
+</div>
+</div>
+
+<!-- Mortgage -->
+<div id="mortgage" class="calculator">
+<div class="calc-grid">
+<div class="form-group">
+<div class="form-label">Loan Amount ($)</div>
+<input type="number" id="mortLoan" value="400000" onchange="calcMortgage()">
+</div>
+<div class="form-group">
+<div class="form-label">Interest Rate (%)</div>
+<input type="number" id="mortRate" value="6.5" step="0.1" onchange="calcMortgage()">
+</div>
+<div class="form-group">
+<div class="form-label">Loan Term (Years)</div>
+<input type="number" id="mortTerm" value="25" onchange="calcMortgage()">
+</div>
+</div>
+<div class="result-grid">
+<div class="result-stat blue">
+<div class="stat-label">MONTHLY REPAYMENT</div>
+<div class="stat-value" id="mortMonthly">$2,386</div>
+</div>
+<div class="result-stat blue">
+<div class="stat-label">WEEKLY REPAYMENT</div>
+<div class="stat-value" id="mortWeekly">$551</div>
+</div>
+<div class="result-stat red" style="grid-column: 1/-1;">
+<div class="stat-label">TOTAL INTEREST OVER LOAN TERM</div>
+<div class="stat-value" id="mortInterest">$315,800</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TEMPLATES PAGE -->
+<section id="templates">
+<div class="container">
+<h2>Email & Letter Templates</h2>
+<p>Use these templates to communicate professionally with builders, landlords, and trades.</p>
+
+<div class="template-grid">
+<div>
+<h3>📄 Builder Defect Claim Email</h3>
+<button class="btn btn-primary" onclick="copyTemplate('Hi [Builder Name],\n\nI am writing to formally notify you of a defect in the property at [Address].\n\nIssue: [Describe the defect]\nLocation: [Specify area]\nDate discovered: [Date]\n\nI have attached photos for reference. Please arrange inspection and repair within 7 days.\n\nThank you,\n[Your Name]\n[Contact Number]')">Copy Template</button>
+<div class="template-content">Hi [Builder Name],
+
+I am writing to formally notify you of a defect in the property at [Address].
+
+Issue: [Describe the defect]
+Location: [Specify area]
+Date discovered: [Date]
+
+I have attached photos for reference. Please arrange inspection and repair within 7 days.
+
+Thank you,
+[Your Name]
+[Contact Number]</div>
+</div>
+
+<div>
+<h3>📋 90-Day Maintenance List</h3>
+<button class="btn btn-primary" onclick="copyTemplate('Hi [Builder Name],\n\nAs per warranty requirements, I am providing a 90-day maintenance list.\n\nItems requiring attention:\n1. [Item 1 with location]\n2. [Item 2 with location]\n3. [Item 3 with location]\n\nPhotos attached. Please confirm receipt and advise repair timeline.\n\nThank you,\n[Your Name]')">Copy Template</button>
+<div class="template-content">Hi [Builder Name],
+
+As per warranty requirements, I am providing a 90-day maintenance list.
+
+Items requiring attention:
+1. [Item 1 with location]
+2. [Item 2 with location]
+3. [Item 3 with location]
+
+Photos attached. Please confirm receipt and advise repair timeline.
+
+Thank you,
+[Your Name]</div>
+</div>
+
+<div>
+<h3>🏠 Rental Repair Request</h3>
+<button class="btn btn-primary" onclick="copyTemplate('Hi [Landlord Name],\n\nI am writing to request urgent repairs to [Address].\n\nIssue: [Describe repair needed]\nDate discovered: [Date]\nPhotos: [Yes/No]\n\nThis is affecting [explain impact]. Please confirm receipt and advise repair date.\n\nThank you,\n[Tenant Name]\n[Contact Number]')">Copy Template</button>
+<div class="template-content">Hi [Landlord Name],
+
+I am writing to request urgent repairs to [Address].
+
+Issue: [Describe repair needed]
+Date discovered: [Date]
+Photos: [Yes/No]
+
+This is affecting [explain impact]. Please confirm receipt and advise repair date.
+
+Thank you,
+[Tenant Name]
+[Contact Number]</div>
+</div>
+
+<div>
+<h3>🔧 Trades Person Quote Request</h3>
+<button class="btn btn-primary" onclick="copyTemplate('Hi [Trades Person Name],\n\nI am seeking a written quote for repair work at [Address].\n\nScope of work:\n[Describe clearly]\n\nRequired materials:\n[List if applicable]\n\nPlease provide:\n- Detailed quote (labour & materials)\n- Timeline for completion\n- Warranty information\n- Payment terms\n\nThank you,\n[Your Name]')">Copy Template</button>
+<div class="template-content">Hi [Trades Person Name],
+
+I am seeking a written quote for repair work at [Address].
+
+Scope of work:
+[Describe clearly]
+
+Required materials:
+[List if applicable]
+
+Please provide:
+- Detailed quote (labour & materials)
+- Timeline for completion
+- Warranty information
+- Payment terms
+
+Thank you,
+[Your Name]</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ARTICLES PAGE -->
+<section id="articles">
+<div class="container">
+<h2>Property Articles & Guides</h2>
+<p>Read practical guides on property defects, warranties, taxes, and investment strategies.</p>
+
+<div class="grid">
+<div class="card">
+<span style="color: #2563eb;">Builder Defects</span>
+<div class="card-title">Is a Garage Door Gap a Builder Defect?</div>
+<div class="card-desc">Understanding warranty coverage for common garage issues.</div>
+</div>
+<div class="card">
+<span style="color: #2563eb;">Warranty</span>
+<div class="card-title">What is Covered Under New Home Warranty?</div>
+<div class="card-desc">Complete guide to HIA warranty coverage and timeframes.</div>
+</div>
+<div class="card">
+<span style="color: #2563eb;">Tax</span>
+<div class="card-title">What Can Landlords Claim on Tax?</div>
+<div class="card-desc">Deductible expenses for rental property owners.</div>
+</div>
+<div class="card">
+<span style="color: #2563eb;">Investment</span>
+<div class="card-title">What is Negative Gearing?</div>
+<div class="card-desc">How rental losses can provide tax benefits.</div>
+</div>
+<div class="card">
+<span style="color: #2563eb;">Defects</span>
+<div class="card-title">Common Defects After New Home Handover</div>
+<div class="card-desc">The top 10 issues to check in the first 90 days.</div>
+</div>
+<div class="card">
+<span style="color: #2563eb;">Investment</span>
+<div class="card-title">How to Calculate Investment Property Cashflow</div>
+<div class="card-desc">Step-by-step guide to understanding rental returns.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT PAGE -->
+<section id="about">
+<div class="container">
+<h2>About PropertyMate AU</h2>
+
+<h3>Our Mission</h3>
+<p>PropertyMate AU is designed to help Australian homeowners, first-home buyers, renters, landlords, and property investors understand property matters in simple, plain English.</p>
+
+<h3 style="margin-top: 2rem;">What We Do</h3>
+<p>We provide general guidance on:</p>
+<ul style="margin-left: 2rem; margin-bottom: 2rem;">
+<li>Builder defects and new home warranty claims</li>
+<li>Rental property maintenance and management</li>
+<li>Investment property tax deductions and cashflow</li>
+<li>Common property issues and solutions</li>
+<li>Practical templates and calculators</li>
+</ul>
+
+<div class="disclaimer" style="margin-top: 2rem;">
+<h3>Important Disclaimer</h3>
+<p>PropertyMate AU provides general information only and is NOT legal, tax, building, engineering, financial, or accounting advice.</p>
+<p><strong>Always consult qualified professionals before making important decisions.</strong></p>
+</div>
+
+<h3 style="margin-top: 2rem;">When to Seek Professional Help</h3>
+<ul style="margin-left: 2rem; margin-bottom: 2rem;">
+<li><strong>Legal:</strong> Warranty disputes, contract review → Consult a lawyer</li>
+<li><strong>Tax:</strong> Deductions, depreciation → Consult a tax accountant</li>
+<li><strong>Building:</strong> Structural issues, defect assessment → Consult a building inspector</li>
+<li><strong>Financial:</strong> Loan pre-approval, investment strategy → Consult a mortgage broker</li>
+<li><strong>Building Trades:</strong> Repairs and quotes → Get multiple quotes from licensed trades</li>
+</ul>
+
+<h3 style="margin-top: 2rem;">Contact & Support</h3>
+<p>Have feedback? Want to contribute? <a href="https://formspree.io/f/xrewlkkk" target="_blank" style="color: #2563eb;">Contact us here</a></p>
+</div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-content">
+<div class="footer-grid">
+<div class="footer-col">
+<h3>PropertyMate AU</h3>
+<p>Simple guidance for Australian property owners and investors.</p>
+</div>
+<div class="footer-col">
+<h3>Quick Links</h3>
+<a href="#" onclick="showPage('defect')">Defect Checker</a>
+<a href="#" onclick="showPage('calculators')">Calculators</a>
+<a href="#" onclick="showPage('articles')">Articles</a>
+</div>
+<div class="footer-col">
+<h3>Legal</h3>
+<a href="#">Disclaimer</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Use</a>
+</div>
+<div class="footer-col">
+<h3>Support</h3>
+<a href="https://formspree.io/f/xrewlkkk" target="_blank">Contact Form</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2024 PropertyMate AU. General information only. Always consult qualified professionals.</p>
+</div>
+</div>
+</footer>
+
+<script>
+// Page Navigation
+function showPage(pageId) {
+const sections = document.querySelectorAll('section');
+sections.forEach(section => section.classList.remove('active'));
+document.getElementById(pageId).classList.add('active');
+
+const navBtns = document.querySelectorAll('.nav-btn');
+navBtns.forEach(btn => btn.classList.remove('active'));
+event.target.classList.add('active');
+
+window.scrollTo(0, 0);
+}
+
+// Ask Question
+function submitQuestion() {
+const question = document.getElementById('question').value;
+if (!question.trim()) {
+alert('Please enter a question');
+return;
+}
+
+const responses = [
+{
+title: 'Possible Causes Identified',
+content: 'Based on your question, this could be related to workmanship or materials. Recommend checking against HIA new home warranty coverage.'
+},
+{
+title: 'Tax Deduction Guidance',
+content: 'Investment property expenses may be deductible, but it depends on whether costs are for repairs (deductible) vs improvements (depreciated). Consult a tax accountant.'
+},
+{
+title: 'General Guidance Provided',
+content: 'PropertyMate AU provides general information about common property issues. For your specific situation, consider speaking with a licensed professional.'
+}
+];
+
+const result = responses[Math.floor(Math.random() * responses.length)];
+const resultDiv = document.getElementById('questionResult');
+resultDiv.innerHTML = `
+<div class="result-box">
+<h2>${result.title}</h2>
+<p>${result.content}</p>
+<h3 style="margin-top: 1.5rem;">Suggested Next Steps:</h3>
+<ul style="margin-left: 2rem;">
+<li>Take detailed photos</li>
+<li>Check relevant documents</li>
+<li>Email relevant parties with specifics</li>
+<li>Consider professional assessment if needed</li>
+</ul>
+</div>
+`;
+resultDiv.classList.remove('hide');
+}
+
+// Defect Checker
+function checkDefect() {
+const area = document.getElementById('defectArea').value;
+const issue = document.getElementById('defectIssue').value;
+
+if (!area || !issue) {
+alert('Please select both area and issue type');
+return;
+}
+
+const defects = {
+'Garage-Gap': { isDefect: 'Likely', urgency: 'Medium', cause: 'Poor weatherproofing seal' },
+'Roof-Leak': { isDefect: 'Possible', urgency: 'High', cause: 'Faulty flashing or poor sealing' },
+'Concrete-Crack': { isDefect: 'Possible', urgency: 'Low', cause: 'Shrinkage or poor finishing' },
+'Windows-Poor Finish': { isDefect: 'Likely', urgency: 'Medium', cause: 'Frame alignment issue' }
+};
+
+const key = `${area}-${issue}`;
+const defectInfo = defects[key] || {
+isDefect: 'Unclear - needs inspection',
+urgency: 'Medium',
+cause: 'Professional assessment recommended'
+};
+
+const resultDiv = document.getElementById('defectResult');
+resultDiv.innerHTML = `
+<div class="result-box" style="margin-top: 2rem;">
+<h2>${area} - ${issue}</h2>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+<div style="background: white; padding: 1rem; border-left: 4px solid #f59e0b; border-radius: 0.375rem;">
+<div style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #666; margin-bottom: 0.25rem;">Likely a Defect?</div>
+<div style="font-size: 1.5rem; font-weight: bold; color: #111;">${defectInfo.isDefect}</div>
+</div>
+<div style="background: white; padding: 1rem; border-left: 4px solid #dc2626; border-radius: 0.375rem;">
+<div style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #666; margin-bottom: 0.25rem;">Urgency Level</div>
+<div style="font-size: 1.5rem; font-weight: bold; color: #111;">${defectInfo.urgency}</div>
+</div>
+</div>
+<h3>Possible Cause</h3>
+<p>${defectInfo.cause}</p>
+<h3 style="margin-top: 1rem;">Next Steps</h3>
+<ul style="margin-left: 2rem;">
+<li>Document with clear photos</li>
+<li>Email your builder formally</li>
+<li>Keep copies of all correspondence</li>
+<li>Consider professional inspection if significant</li>
+</ul>
+</div>
+`;
+resultDiv.classList.remove('hide');
+}
+
+// Calculator Functions
+function switchCalc(calcId) {
+const calcs = document.querySelectorAll('.calculator');
+calcs.forEach(calc => calc.classList.remove('active'));
+document.getElementById(calcId).classList.add('active');
+
+const btns = document.querySelectorAll('.calc-btn');
+btns.forEach(btn => {
+btn.classList.remove('active');
+btn.classList.add('inactive');
+});
+event.target.classList.add('active');
+event.target.classList.remove('inactive');
+}
+
+function calcInvestment() {
+const propValue = parseFloat(document.getElementById('invPropValue').value) || 0;
+const loanAmount = parseFloat(document.getElementById('invLoanAmount').value) || 0;
+const rate = parseFloat(document.getElementById('invRate').value) || 0;
+const weeklyRent = parseFloat(document.getElementById('invWeeklyRent').value) || 0;
+const council = parseFloat(document.getElementById('invCouncil').value) || 0;
+const water = parseFloat(document.getElementById('invWater').value) || 0;
+const strata = parseFloat(document.getElementById('invStrata').value) || 0;
+const insurance = parseFloat(document.getElementById('invInsurance').value) || 0;
+const mgmt = parseFloat(document.getElementById('invMgmt').value) || 0;
+const repairs = parseFloat(document.getElementById('invRepairs').value) || 0;
+
+const annualRent = weeklyRent * 52;
+const annualInterest = loanAmount * (rate / 100);
+const totalExpenses = council + water + strata + insurance + mgmt + repairs;
+const netCashflow = annualRent - totalExpenses - annualInterest;
+
+document.getElementById('invAnnualRent').textContent = '$' + Math.round(annualRent).toLocaleString();
+document.getElementById('invExpenses').textContent = '$' + Math.round(totalExpenses).toLocaleString();
+document.getElementById('invCashflow').textContent = '$' + Math.round(netCashflow).toLocaleString();
+}
+
+function calcGearing() {
+const income = parseFloat(document.getElementById('gearIncome').value) || 0;
+const expenses = parseFloat(document.getElementById('gearExpenses').value) || 0;
+const interest = parseFloat(document.getElementById('gearInterest').value) || 0;
+const taxRate = parseFloat(document.getElementById('gearTaxRate').value) || 0;
+
+const profit = income - expenses - interest;
+const benefit = profit < 0 ? Math.abs(profit) * (taxRate / 100) : 0;
+
+const profitBox = document.getElementById('gearProfitBox');
+profitBox.className = 'result-stat ' + (profit < 0 ? 'green' : 'red');
+
+document.getElementById('gearProfit').textContent = '$' + Math.round(profit).toLocaleString();
+document.getElementById('gearBenefit').textContent = '$' + Math.round(benefit).toLocaleString();
+}
+
+function calcMortgage() {
+const loan = parseFloat(document.getElementById('mortLoan').value) || 0;
+const rate = parseFloat(document.getElementById('mortRate').value) || 0;
+const years = parseFloat(document.getElementById('mortTerm').value) || 0;
+
+const monthlyRate = rate / 100 / 12;
+const numPayments = years * 12;
+const monthly = (loan * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+const weekly = monthly * 12 / 52;
+const totalInterest = (monthly * numPayments) - loan;
+
+document.getElementById('mortMonthly').textContent = '$' + Math.round(monthly).toLocaleString();
+document.getElementById('mortWeekly').textContent = '$' + Math.round(weekly).toLocaleString();
+document.getElementById('mortInterest').textContent = '$' + Math.round(totalInterest).toLocaleString();
+}
+
+// Copy Template
+function copyTemplate(text) {
+navigator.clipboard.writeText(text);
+alert('Template copied to clipboard!');
+}
+
+// Toggle Mobile Menu
+function toggleMobileMenu() {
+// Mobile menu functionality
+}
+
+// Initialize calculators
+calcInvestment();
+calcGearing();
+calcMortgage();
+</script>
+</body>
+</html>
